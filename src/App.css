@@ -13,6 +13,11 @@
   }
 }
 
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -32,7 +37,216 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #333;
+  /* Couleur sombre de fond */
+  color: white;
+}
+
+.logo-container {
+  margin-bottom: 150px;
+}
+
+.logo {
+  max-width: 500px;
+  height: auto;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 5px;
+  margin-top: -5px;
+  padding: 8px;
+  margin-left: -33.33%;
+  margin-right: -33.33%;
+  width: 230px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  /* Couleur du bouton */
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: 120px 120px;
+  justify-content: space-around;
+  column-gap: 10px;
+}
+
+.item-form {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.grid-item-left {
+  text-align: start;
+}
+
+.grid-item-right {
+  text-align: end;
+}
+
+.form-sign-in {
+  width: 300px;
+}
+
+.error-messages-container {
+  margin-top: 10px;
+}
+
+.error-message {
+  color: white;
+  background-color: #ff3636;
+  /* Couleur rouge */
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+  width: 240px;
+  cursor: pointer;
+  /* Ajout du curseur pointer */
+}
+
+/* Style pour la fermeture de la notification */
+.error-message:hover {
+  opacity: 0.8;
+}
+
+/* OptionsPage.css */
+.options-page {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #333;
+  /* Couleur sombre de fond */
+  color: white;
+}
+
+.menu-bar {
+  height: 5%;
+  background-color: #3b3b3b;
+  /* Couleur de fond de la barre de menu */
+  border-bottom: 2px solid #232323;
+  /* Trait de séparation avec le reste de la page */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 20px;
+  /* Espacement intérieur */
+  color: white;
+  /* Couleur du texte */
+}
+
+.options-content {
+  display: flex;
+}
+
+.logo-menu-right {
+  max-width: 50px;
+  height: 50px;
+  float: right;
+}
+
+.logo-menu-left {
+  max-width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.options-left {
+  float: left;
+}
+
+.options-right {
+  float: right;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.external-links {
+  display: flex;
+  flex-direction: column;
+}
+
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav li {
+  text-align: -webkit-match-parent;
+  display: list-item;
+  cursor: pointer;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.left-panel,
+.right-panel {
+  width: 45%;
+  padding: 20px;
+  border: 1px solid #3f3f3f;
+}
+
+.left-panel {
+  background-color: #494949;
+  float: left;
+}
+
+.right-panel {
+  background-color: #494949;
+  float: right;
+}
+
+.App-header2 {
+  background-color: #2d2d2d;
+  color: #f1f1f1;
+  padding: 0;
+  letter-spacing: 1px;
+  font-family: 'Source Sans Pro Topnav', sans-serif;
+  font-size: 0;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: auto;
+  scrollbar-width: none;
+  display: block;
+  position: fixed;
+  left: 0;
+  z-index: 4;
 }
