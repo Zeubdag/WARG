@@ -43,8 +43,8 @@ const SettingsPage = () => {
         </div>
 
         <div className="right-panel">
-          <h2>Informations de votre compte</h2>
-          <p>Form change data</p>
+          <h2>Modifier les informations de votre compte</h2>
+          <AccountForm />
         </div>
       </div>
     </div>
