@@ -32,6 +32,34 @@ const SignupForm = () => {
       newErrorMessages.push('Veuillez rentrer une adresse mail valide.');
     }
 
+    if (newErrorMessages.length === 0) {
+
+      const response = fetch('http://52.47.150.41:8080/api/v1/account', {
+        method: 'POST',
+        body: JSON.stringify({
+          username: username,
+          mail: email,
+          password: password,
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+      });
+
+      response.then(response => {
+        if (response.status >= 200 && response.status < 300) {
+          console.log("Compte créé")
+        } else {
+          // Connexion réussie, effectue les actions nécessaires
+          newErrorMessages.push("Erreur de connexion");
+        }
+      }).catch(error => {
+        newErrorMessages.push('Erreur lors de la requête:' + error);
+      })
+      setErrorMessages(newErrorMessages);
+    };
+
     setErrorMessages(newErrorMessages);
   };
 
