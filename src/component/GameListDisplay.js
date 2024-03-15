@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GameDisplay from '../component/GameDisplay';
 
 const GamesListDisplay = ({games}) => {
+  console.log(games)
   const [maxHeight, setMaxHeight] = useState('400px');
 
   useEffect(() => {

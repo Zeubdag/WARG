@@ -7,13 +7,15 @@ const GamesPage = () => {
   const [gamesSmall, setSmallGames] = useState([]);
 
   useEffect(() => {
-    const accessToken = 'KjxwY6VeTUo1UYB13TDE0mFiwOHlgQFVoMvVpBBXHyS422hBKSCE9yXaI7V2Kln25Qf3QZBDGcAFu5MsdshrxPcFSCwMAZ3IM63oXK98O5B5EkJ7b9e6lbVPdTpx6KbFohwO5kV0NEl-x_WsxcKC9HGYbfqAn5pDZbC_pYm9yI8S4y3jse2JDyq6ZORxiHzi';
+    const accessToken = localStorage.getItem('token')
+    //const accessToken = 'KjxwY6VeTUo1UYB13TDE0mFiwOHlgQFVoMvVpBBXHyS422hBKSCE9yXaI7V2Kln25Qf3QZBDGcAFu5MsdshrxPcFSCwMAZ3IM63oXK98O5B5EkJ7b9e6lbVPdTpx6KbFohwO5kV0NEl-x_WsxcKC9HGYbfqAn5pDZbC_pYm9yI8S4y3jse2JDyq6ZORxiHzi';
     const fetchComputerData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/v1/games/steam/computer', {
-            /*headers: {
-              Authorization: `Bearer ${accessToken}`
-            }*/
+        const url = 'http://52.47.150.41:8080/api/v1/games/steam/computer?steamId=76561198092821179'
+        const response = await fetch(url, {
+            headers: {
+              Authorization: `${accessToken}`
+            }
             });
         const data = await response.json();
         setLargeGames(data);
@@ -27,10 +29,11 @@ const GamesPage = () => {
 
     const fetchMobileData = async () => {
         try {
-          const response = await fetch('http://localhost:8080/api/v1/games/steam/mobile', {
-            /*headers: {
-              Authorization: `Bearer ${accessToken}`
-            }*/
+          const url = 'http://52.47.150.41:8080/api/v1/games/steam/mobile?steamId=76561198092821179'
+          const response = await fetch(url, {
+            headers: {
+              Authorization: `${accessToken}`
+            }
             });
           const data = await response.json();
           setSmallGames(data);

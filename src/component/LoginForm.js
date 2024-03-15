@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessages, setErrorMessages] = useState([]);
@@ -30,8 +32,8 @@ const LoginForm = () => {
     }*/
     if (newErrorMessages.length === 0) {
       try {
-
-        const response = fetch('http://localhost:8080/api/v1/login/login', {
+        let token
+        const response = fetch('http://52.47.150.41:8080/api/v1/login/login', {
           method: 'POST',
           body: JSON.stringify({
             mail: username,
@@ -40,40 +42,52 @@ const LoginForm = () => {
           headers: {
             'Content-Type': 'application/json'
           },
-          
-        });
-
-        if (response.ok) {
-          // Connexion réussie, effectue les actions nécessaires
-        } else {
-          // Gestion des erreurs de connexion
-          //const errorData = response.json();
+        })
+        response.then(response => {
+          response.json().then(data => {
+            // Effectuez ici le traitement avec les données JSON
+            console.log("response reçue : ", data);
+            console.log("token"+data.token)
+            token = data.token
+            localStorage.setItem('token', token);
+            console.log("GET LOCAL STORAGE TOKEN : ", localStorage.getItem('token'))
+          }).catch(error => {
+            console.error('Erreur lors de la conversion de la réponse en JSON : ', error);
+          })
+          if (response.status >= 200 && response.status < 300) {
+            navigate('/games')
+          } else {
+            // Gestion des erreurs ici
+            newErrorMessages.push('Erreur lors de la requête');
+          }
+        }).catch(error => {
+          // Gestion des erreurs de connexion ici
           newErrorMessages.push('Erreur de connexion');
-        }
+        });
       } catch (error) {
-        newErrorMessages.push('Erreur lors de la requête:' + error);
+        newErrorMessages.push('Erreur lors de la requête');
       }
     }
     setErrorMessages(newErrorMessages);
   };
 
   return (
-    <form action={handleLogin} class="form-sign-in">
+    <form action={handleLogin} className="form-sign-in">
       <div className="grid-container">
-        <div class="item-form"><input
+        <div className="item-form"><input
           type="text"
           placeholder="Nom d'utilisateur"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         /></div>
-        <div class="item-form"><input
+        <div className="item-form"><input
           type="password"
           placeholder="Mot de passe"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         /></div>
         <Link to="/signup">Créer un compte</Link>
-        <div class="grid-item-right"><button onClick={handleLogin}>Se connecter</button></div>
+        <div className="grid-item-right"><button onClick={handleLogin}>Se connecter</button></div>
         {errorMessages.length > 0 && (
           <div className="error-messages-container">
             {errorMessages.map((message, index) => (
