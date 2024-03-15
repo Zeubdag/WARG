@@ -42,10 +42,11 @@ const GogForm = () => {
               const response = fetch('http://52.47.150.41:8080/api/v1/account/settings', {
                 method: 'PUT',
                 body: JSON.stringify({
-                    gogUsername: gogid,
+                    gogUsername: 'Bearer ' + gogid,
                 }),
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  'Authentication': localStorage.getItem('token')
                 },
                 
               });

@@ -45,7 +45,8 @@ const SteamForm = () => {
                     steamUsername: steamid,
                 }),
                 headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  'Authentication': localStorage.getItem('token')
                 },
                 
               });

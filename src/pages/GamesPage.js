@@ -11,7 +11,7 @@ const GamesPage = () => {
     //const accessToken = 'KjxwY6VeTUo1UYB13TDE0mFiwOHlgQFVoMvVpBBXHyS422hBKSCE9yXaI7V2Kln25Qf3QZBDGcAFu5MsdshrxPcFSCwMAZ3IM63oXK98O5B5EkJ7b9e6lbVPdTpx6KbFohwO5kV0NEl-x_WsxcKC9HGYbfqAn5pDZbC_pYm9yI8S4y3jse2JDyq6ZORxiHzi';
     const fetchComputerData = async () => {
       try {
-        const url = 'http://52.47.150.41:8080/api/v1/games/steam/computer?steamId=76561198092821179'
+        const url = 'http://52.47.150.41:8080/api/v1/games/steam/computer'
         const response = await fetch(url, {
             headers: {
               Authentication: `${accessToken}`
