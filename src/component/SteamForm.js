@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 
 const SteamForm = () => {
     const [steamid, setSteamid] = useState('');
     const [errorMessages, setErrorMessages] = useState([]);
+    const navigate = useNavigate()
 
     const Button = styled.button`
     background-color: #3f51b5;
@@ -13,7 +15,7 @@ const SteamForm = () => {
     outline: 0;
     width: 100%;
     display: block;
-    border: 0; 
+    border: 0;
     text-transform: uppercase;
     margin: 10px 0px;
     cursor: pointer;
@@ -37,8 +39,9 @@ const SteamForm = () => {
         }
 
         if (newErrorMessages.length === 0) {
+            /*
             try {
-      
+
               const response = fetch('http://52.47.150.41:8080/api/v1/account/settings', {
                 method: 'PUT',
                 body: JSON.stringify({
@@ -48,9 +51,9 @@ const SteamForm = () => {
                   'Content-Type': 'application/json',
                   'Authentication': localStorage.getItem('token')
                 },
-                
+
               });
-      
+
               if (response.status === 204) {
                 // Connexion réussie, effectue les actions nécessaires
               } else {
@@ -61,6 +64,9 @@ const SteamForm = () => {
             } catch (error) {
               newErrorMessages.push('Erreur lors de la requête:' + error);
             }
+            */
+           localStorage.setItem("steamId", steamid)
+            navigate('/games')
           }
 
         setErrorMessages(newErrorMessages);
