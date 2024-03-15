@@ -39,7 +39,7 @@ const SteamForm = () => {
         }
 
         if (newErrorMessages.length === 0) {
-            /*
+        
             try {
 
               const response = fetch('http://52.47.150.41:8080/api/v1/account/settings', {
@@ -53,20 +53,10 @@ const SteamForm = () => {
                 },
 
               });
-
-              if (response.status === 204) {
-                // Connexion réussie, effectue les actions nécessaires
-              } else {
-                // Gestion des erreurs de connexion
-                //const errorData = response.json();
-                newErrorMessages.push('Erreur de communication');
-              }
             } catch (error) {
               newErrorMessages.push('Erreur lors de la requête:' + error);
             }
-            */
            localStorage.setItem("steamId", steamid)
-            navigate('/games')
           }
 
         setErrorMessages(newErrorMessages);

@@ -50,14 +50,6 @@ const GogForm = () => {
                 },
                 
               });
-      
-              if (response.ok) {
-                // Connexion réussie, effectue les actions nécessaires
-              } else {
-                // Gestion des erreurs de connexion
-                //const errorData = response.json();
-                newErrorMessages.push('Erreur de communication');
-              }
             } catch (error) {
               newErrorMessages.push('Erreur lors de la requête:' + error);
             }

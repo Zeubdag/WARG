@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 
+import { useNavigate } from 'react-router-dom';
+
 const AccountForm = () => {
+
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -74,6 +78,12 @@ const AccountForm = () => {
 
     setErrorMessages(newErrorMessages);
   };
+
+  const handleDisconnect = (e) => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('steamId')
+    navigate("/login")
+  }
   
   return (
     <div>
@@ -116,6 +126,8 @@ const AccountForm = () => {
       </div>
 
     </form>
+
+    <Button onClick={handleDisconnect}>Se Déconnecter</Button>
       
     </div>
   );

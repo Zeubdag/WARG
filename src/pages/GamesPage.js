@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GameListDisplay from '../component/GameListDisplay';
 import GameCarousel from '../component/GameCarousel';
 import { useNavigate } from 'react-router-dom';
+import MenuBar from '../component/MenuBar';
 
 const GamesPage = () => {
   const [gamesLarge, setLargeGames] = useState([]);
@@ -12,13 +13,6 @@ const GamesPage = () => {
   console.log('STEAM ID : ', steamId)
 
   useEffect(() => {
-    const fetchAccountSettings = async () => {
-      if(steamId == undefined || steamId == 'vide' || steamId == '') {
-        navigate('/settings')
-      }
-    }
-
-    fetchAccountSettings();
 
     //const accessToken = 'KjxwY6VeTUo1UYB13TDE0mFiwOHlgQFVoMvVpBBXHyS422hBKSCE9yXaI7V2Kln25Qf3QZBDGcAFu5MsdshrxPcFSCwMAZ3IM63oXK98O5B5EkJ7b9e6lbVPdTpx6KbFohwO5kV0NEl-x_WsxcKC9HGYbfqAn5pDZbC_pYm9yI8S4y3jse2JDyq6ZORxiHzi';
     const fetchComputerData = async () => {
@@ -40,7 +34,7 @@ const GamesPage = () => {
 
     const fetchMobileData = async () => {
         try {
-          const url = 'http://52.47.150.41:8080/api/v1/games/steam/mobile?steamId=' + steamId
+          const url = 'http://52.47.150.41:8080/api/v1/games/steam/mobile'
           const response = await fetch(url, {
             headers: {
               Authentication: `${accessToken}`
@@ -58,14 +52,19 @@ const GamesPage = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-      <div style={{ marginRight: '20px' }}>
+    <div className="options-page">
+      <MenuBar />
+    <body>
+    <div className="main-content">
+      <div className="center-panel">
         <GameListDisplay games={gamesSmall} style={{ width: '40%', marginRight: '20px' }}/>
       </div>
       <div>
         <GameCarousel games={gamesLarge} style={{ width: '60%' }}
         />
       </div>
+    </div>
+    </body>
     </div>
   );
 };

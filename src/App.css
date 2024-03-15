@@ -230,7 +230,8 @@ nav li {
 }
 
 .left-panel,
-.right-panel {
+.right-panel,
+.center-panel {
   width: 45%;
   padding: 20px;
   border: 1px solid #3f3f3f;
@@ -244,6 +245,9 @@ nav li {
 .right-panel {
   background-color: #494949;
   float: right;
+}
+.center-panel {
+  float: center;
 }
 
 .App-header2 {
