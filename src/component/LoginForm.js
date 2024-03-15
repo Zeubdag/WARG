@@ -29,32 +29,32 @@ const LoginForm = () => {
       newErrorMessages.push('Arrêtez de vouloir faire des injections SQL s\'il vous plait.');
     }*/
     if (newErrorMessages.length === 0) {
-      try {
 
-        const response = fetch('http://localhost:8080/api/v1/login/login', {
-          method: 'POST',
-          body: JSON.stringify({
-            mail: username,
-            password: password,
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          
-        });
+      const response = fetch('http://52.47.150.41:8080/api/v1/login/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          mail: username,
+          password: password,
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
 
-        if (response.ok) {
-          // Connexion réussie, effectue les actions nécessaires
+      });
+
+      response.then(response => {
+        if (response.status >= 200 && response.status < 300) {
+          localStorage.setItem('isAuthentificated', true);
+          console.log(localStorage.getItem('isAuthentificated'))
         } else {
-          // Gestion des erreurs de connexion
-          //const errorData = response.json();
-          newErrorMessages.push('Erreur de connexion');
+          // Connexion réussie, effectue les actions nécessaires
+          newErrorMessages.push("Erreur de connexion");
         }
-      } catch (error) {
+      }).catch(error => {
         newErrorMessages.push('Erreur lors de la requête:' + error);
-      }
-    }
-    setErrorMessages(newErrorMessages);
+      })
+      setErrorMessages(newErrorMessages);
+    };
   };
 
   return (

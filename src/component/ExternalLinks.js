@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
 
 
 
@@ -33,12 +34,12 @@ const ExternalLinks = () => {
   
 
   const routeChange = () => {
-    navigate(`https://steamcommunity.com/openid/login?openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&openid.identity=http://specs.openid.net/auth/2.0/identifier_select&openid.mode=checkid_setup&openid.ns=http://specs.openid.net/auth/2.0&openid.realm=https://localhost:3000&openid.return_to=https://localhost:3000/settings/`);
+    //navigate(`https://steamcommunity.com/openid/login?openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&openid.identity=http://specs.openid.net/auth/2.0/identifier_select&openid.mode=checkid_setup&openid.ns=http://specs.openid.net/auth/2.0&openid.realm=https://localhost:3000&openid.return_to=https://localhost:3000/settings/`);
   }
 
 return (
   <div className="external-links">
-    <Button onClick={routeChange}>Steam</Button>
+    <Button onClick={routeChange}><Link to={{ pathname: "https://steamcommunity.com/openid/login?openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&openid.identity=http://specs.openid.net/auth/2.0/identifier_select&openid.mode=checkid_setup&openid.ns=http://specs.openid.net/auth/2.0&openid.realm=https://localhost:3000&openid.return_to=https://localhost:3000/settings/" }} target="_blank" /> Steam</Button>
   </div>
 );
 };
