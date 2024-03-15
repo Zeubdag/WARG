@@ -55,7 +55,7 @@ const LoginForm = () => {
             console.error('Erreur lors de la conversion de la réponse en JSON : ', error);
           })
           if (response.status >= 200 && response.status < 300) {
-            navigate('/games')
+            navigate('/settings')
           } else {
             // Gestion des erreurs ici
             newErrorMessages.push('Erreur lors de la requête');
