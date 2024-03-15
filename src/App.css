@@ -112,6 +112,7 @@ button {
 
 .error-messages-container {
   margin-top: 10px;
+  align-items: center;
 }
 
 .error-message {
@@ -123,6 +124,19 @@ button {
   border-radius: 5px;
   width: 240px;
   cursor: pointer;
+  /* Ajout du curseur pointer */
+}
+
+.error-message-settings {
+  color: white;
+  background-color: #ff3636;
+  /* Couleur rouge */
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
   /* Ajout du curseur pointer */
 }
 
