@@ -14,12 +14,11 @@ const GamesPage = () => {
         const url = 'http://52.47.150.41:8080/api/v1/games/steam/computer?steamId=76561198092821179'
         const response = await fetch(url, {
             headers: {
-              Authorization: `${accessToken}`
+              Authentication: `${accessToken}`
             }
             });
         const data = await response.json();
         setLargeGames(data);
-        console.log("balls ",data)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -32,18 +31,43 @@ const GamesPage = () => {
           const url = 'http://52.47.150.41:8080/api/v1/games/steam/mobile?steamId=76561198092821179'
           const response = await fetch(url, {
             headers: {
-              Authorization: `${accessToken}`
+              Authentication: `${accessToken}`
             }
             });
           const data = await response.json();
           setSmallGames(data);
-          console.log("balls ",data)
         } catch (error) {
           console.error('Error fetching data:', error);
         }
       };
 
       fetchMobileData();
+
+
+    const fetchAccountSettings = async () => {
+      try {
+        const url = 'http://52.47.150.41:8080/api/v1/account/settings'
+        const response = await fetch(url, {
+          method : 'GET',
+          headers: {
+            Authentication: `${accessToken}`
+          }
+        });
+        console.log('response fetch account settings : ', response)
+        response.then(response => {
+          console.log('response fetch account settings .then : ', response)
+          response.json().then( data => {
+            console.log('response fetch account settings data : ', data)
+            localStorage.setItem('settings', data)
+            console.log("GET ACCOUNT SETTINGS : ",localStorage.getItem('settings'))
+          });
+        });
+      } catch (error) {
+        console.error('error fetching settings')
+      }
+    }
+
+    fetchAccountSettings();
 
   }, []);
 

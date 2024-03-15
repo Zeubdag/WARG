@@ -18,7 +18,7 @@ function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/settings" element={localStorage.getItem('isAuthentificated') ? <SettingsPage /> : <Navigate to="/login" />} />
-          <Route path="/games" element={localStorage.getItem('isAuthentificated') ? <GamesPage/> : <Navigate to="/login" />}/>
+          <Route path="/games" element={localStorage.getItem('token') ? <GamesPage/> : <Navigate to="/login" />}/>
           <Route path="/token" element={<GogTokenPage/>}/>
         </Routes>
       </div>

@@ -46,8 +46,6 @@ const LoginForm = () => {
         response.then(response => {
           response.json().then(data => {
             // Effectuez ici le traitement avec les données JSON
-            console.log("response reçue : ", data);
-            console.log("token"+data.token)
             token = data.token
             localStorage.setItem('token', token);
             console.log("GET LOCAL STORAGE TOKEN : ", localStorage.getItem('token'))
